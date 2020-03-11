@@ -16,6 +16,7 @@ class LeafletMap extends Component {
         <TileLayer
           url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
           attribution='&copy;  <a href="http://www.esri.com/">Esri</a> '
+          maxZoom={17.5}
         />
       </Map>
     );
