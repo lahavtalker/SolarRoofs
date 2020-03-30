@@ -16,9 +16,7 @@ class Navbar extends Component {
             </h1>
             <ul>
               <li>
-                <a class="current" href="index.html">
-                  Private service
-                </a>
+                <a href="index.html">Private service</a>
               </li>
               <li>
                 <a href="about.html">Organizational service</a>
