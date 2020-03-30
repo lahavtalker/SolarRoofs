@@ -2,7 +2,7 @@
   margin: auto;
   max-width: 1250px;
   overflow: auto;
-  padding: 0px 20px;
+  padding: 0px 0px;
 }
 
 .navbar {
@@ -21,11 +21,14 @@
   display: block;
   text-align: center;
   color: #f7c08a;
+  margin: 0px;
+  padding: 6px;
 }
 
 .navbar ul {
   list-style: none;
   float: right;
+  margin: 0;
 }
 
 .navbar ul li {
