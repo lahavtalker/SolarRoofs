@@ -1,8 +1,8 @@
 .container {
   margin: auto;
-  max-width: 1100px;
+  max-width: 1250px;
   overflow: auto;
-  padding: 0 20px;
+  padding: 0px 20px;
 }
 
 .navbar {
@@ -13,6 +13,7 @@
 
 .navbar a {
   color: #fff;
+  text-decoration: none;
 }
 
 .navbar h1 {
@@ -39,11 +40,15 @@
 
 .navbar li a:hover {
   background: #444;
-  color: #f7c08a;
+  color: #ffca38;
 }
 
 .website-logo {
   width: 30px !important;
   height: 35px !important;
   padding-left: 10px;
+}
+
+span {
+  color: #ffca38;
 }

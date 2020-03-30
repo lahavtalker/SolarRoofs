@@ -10,21 +10,21 @@ class Navbar extends Component {
           <div className="container">
             <h1 className="logo">
               <a href="#">
-                Solar Roofs Service
+                <span>S</span>olar <span>R</span>oofs <span>S</span>ervice
                 <img className="website-logo" src={Logo} alt=""></img>
               </a>
             </h1>
             <ul>
               <li>
                 <a class="current" href="index.html">
-                  Home
+                  Private service
                 </a>
               </li>
               <li>
-                <a href="about.html">About</a>
+                <a href="about.html">Organizational service</a>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href="contact.html">Nationl service</a>
               </li>
             </ul>
           </div>
