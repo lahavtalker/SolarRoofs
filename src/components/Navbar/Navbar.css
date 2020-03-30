@@ -1,0 +1,49 @@
+.container {
+  margin: auto;
+  max-width: 1100px;
+  overflow: auto;
+  padding: 0 20px;
+}
+
+.navbar {
+  background: #333;
+  color: #fff;
+  overflow: auto;
+}
+
+.navbar a {
+  color: #fff;
+}
+
+.navbar h1 {
+  float: left;
+  display: block;
+  text-align: center;
+  color: #f7c08a;
+}
+
+.navbar ul {
+  list-style: none;
+  float: right;
+}
+
+.navbar ul li {
+  float: left;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar li a:hover {
+  background: #444;
+  color: #f7c08a;
+}
+
+.website-logo {
+  width: 30px !important;
+  height: 35px !important;
+  padding-left: 10px;
+}
