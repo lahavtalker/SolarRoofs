@@ -25,6 +25,7 @@ class LeafletMap extends Component {
             building.geometry.coordinates[0]
           ]} />
         ))} */}
+        <Marker position={position} />
       </Map>
     );
   }
