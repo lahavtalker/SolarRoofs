@@ -16,13 +16,13 @@ class Navbar extends Component {
             </h1>
             <ul>
               <li>
-                <a href="index.html">Private service</a>
+                <a href="#">Private service</a>
               </li>
               <li>
-                <a href="about.html">Organizational service</a>
+                <a href="#">Organizational service</a>
               </li>
               <li>
-                <a href="contact.html">Nationl service</a>
+                <a href="#">Nationl service</a>
               </li>
             </ul>
           </div>
