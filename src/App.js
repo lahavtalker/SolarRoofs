@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import LeafletMap from "./components/Map/LeafletMap";
 import Navbar from "./components/Navbar/Navbar";
-import AboutUs from "./components/AboutUs/AbboutUs";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   return (
