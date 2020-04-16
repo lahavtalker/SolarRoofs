@@ -9,7 +9,7 @@ import * as data from "./test.json";
 
 const startPosition = [31.25181, 34.7913];
 
-const LeafletMap = () => {
+const LeafletMap = (props) => {
   return (
     <Map center={startPosition} zoom={13}>
       <TileLayer

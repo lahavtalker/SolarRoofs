@@ -1,12 +1,11 @@
 import React from "react";
 import LeafletMap from "../Map/LeafletMap";
-import SearchBar from "../SearchBar/SearchBar";
+import Menu from "../Menu/Menu";
 
 const PrivateService = () => {
   return (
-    <div>
-      Private Service
-      <SearchBar typeSearch={"Address:"} />
+    <div className="grid-container">
+      <Menu service={"Private Service"} typeSearch={"Address:"} />
       <LeafletMap />
     </div>
   );

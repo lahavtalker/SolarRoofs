@@ -5,7 +5,7 @@ const SearchBar = ({ typeSearch }) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    console.log(location);
+    setLocation(location);
   };
 
   return (
@@ -16,8 +16,11 @@ const SearchBar = ({ typeSearch }) => {
           <input
             type="text"
             value={location}
-            onChange={(event) => setLocation(event.target.value)}
+            onChange={(event) => {
+              setLocation(event.target.value);
+            }}
           />
+          <button>Serach</button>
         </div>
       </form>
     </div>
