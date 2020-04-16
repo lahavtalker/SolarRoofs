@@ -6,7 +6,7 @@ const PrivateService = () => {
   return (
     <div>
       Private Service
-      <SearchBar />
+      <SearchBar typeSearch={"Address:"} />
       <LeafletMap />
     </div>
   );

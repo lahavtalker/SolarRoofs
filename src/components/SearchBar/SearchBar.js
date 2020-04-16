@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 
-const SearchBar = () => {
+const SearchBar = ({ typeSearch }) => {
   const [location, setLocation] = useState("");
 
   const onFormSubmit = (event) => {
@@ -13,7 +12,7 @@ const SearchBar = () => {
     <div className="">
       <form onSubmit={onFormSubmit} className="">
         <div className="field">
-          <label>address:</label>
+          <label>{typeSearch}</label>
           <input
             type="text"
             value={location}
