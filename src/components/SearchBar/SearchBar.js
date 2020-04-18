@@ -13,7 +13,7 @@ const SearchBar = ({ typeSearch, searchByCity }) => {
   };
 
   return (
-    <div className="topnav">
+    <div>
       <label style={{ fontWeight: "600", marginRight: "10px" }}>
         {typeSearch}
       </label>

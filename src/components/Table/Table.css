@@ -2,10 +2,11 @@
   text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   width: 100%;
+  margin-top: 10px;
 }
 
-bld-list td,
-bld-list th {
+.bld-list td,
+.bld-list th {
   border: 1px solid #ddd;
   padding: 8px;
 }

@@ -1,32 +1,25 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { searchByCity, searchByAddress } from "../redux/action";
 import "./Menu.css";
+import { connect } from "react-redux";
 
-import SearchBar from "../SearchBar/SearchBar";
-import BldList from "../BldList/BldList";
-import BldItem from "../BldItem/BldItem";
-
-const Menu = ({ service }) => {
-  const renderbldList = () => {
-    if (service === "National Service" || service === "Organizational Service")
-      return <BldList />;
-    if (service === "Private Service") return <BldItem />;
-  };
-
-  const renderSearchBar = () => {
-    if (service === "National Service" || service === "Organizational Service")
-      return <SearchBar typeSearch="City:" />;
-    if (service === "Private Service")
-      return <SearchBar typeSearch="Address:" />;
-  };
+const Menu = ({
+  service,
+  searchByCity,
+  funcRenderBld,
+  funcRenderSearchBar,
+}) => {
+  useEffect(() => {
+    searchByCity({ location: "" });
+  }, [searchByCity]);
 
   return (
     <div>
       <h3>{service}</h3>
-      {renderSearchBar()}
-      <div style={{ height: "72vh", overflowY: "auto" }}>{renderbldList()}</div>
+      {funcRenderSearchBar()}
+      <div style={{ height: "72vh", overflowY: "auto" }}>{funcRenderBld()}</div>
     </div>
   );
 };
 
-export default Menu;
+export default connect(null, { searchByCity })(Menu);

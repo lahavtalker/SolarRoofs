@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as bld from "../BeerSheva.json";
 import "./Table.css";
 
-const Table = ({ searchResult, searchValue }) => {
+const Table = ({ searchValue }) => {
   const onClickOnBld = (id) => {
     console.log("I am Click on this bld- " + id);
   };
