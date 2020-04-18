@@ -1,12 +1,10 @@
 import React from "react";
-import BldItem from "../BldItem/BldItem";
 import Table from "../Table/Table";
 
-const BldList = () => {
+const BldList = (props) => {
   return (
     <div>
-      ListBld
-      <Table />
+      <Table list={props.searchResult} />
     </div>
   );
 };

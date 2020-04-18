@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-
-const SearchBar = ({ typeSearch }) => {
+import { searchByCity } from "../redux/action";
+import { connect } from "react-redux";
+const SearchBar = ({ typeSearch, searchByCity }) => {
   const [location, setLocation] = useState("");
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-    setLocation(location);
+  const onClickEvent = () => {
+    if (location.length > 0) {
+      if (typeSearch === "City:") {
+        searchByCity({ location });
+      }
+    }
   };
 
   return (
-    <div className="topnav" onSubmit={onFormSubmit}>
-      <label style={{ fontWeight: "600" }}>{typeSearch} </label>
+    <div className="topnav">
+      <label style={{ fontWeight: "600", marginRight: "10px" }}>
+        {typeSearch}
+      </label>
       <input
         type="text"
         value={location}
@@ -18,9 +24,9 @@ const SearchBar = ({ typeSearch }) => {
           setLocation(event.target.value);
         }}
       />
-      <button>Serach</button>
+      <button onClick={onClickEvent}>Serach</button>
     </div>
   );
 };
 
-export default SearchBar;
+export default connect(null, { searchByCity })(SearchBar);
