@@ -9,13 +9,13 @@ import * as data from "./test.json";
 
 const startPosition = [31.25181, 34.7913];
 
-const LeafletMap = (props) => {
+const LeafletMap = () => {
   return (
     <Map center={startPosition} zoom={13}>
       <TileLayer
         url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         attribution='&copy;  <a href="http://www.esri.com/">Esri</a> '
-        maxZoom={17.5}
+        maxZoom={18}
       />
 
       {data.features.map((bld) => (

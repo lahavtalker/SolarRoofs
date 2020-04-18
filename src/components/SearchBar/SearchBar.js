@@ -9,20 +9,16 @@ const SearchBar = ({ typeSearch }) => {
   };
 
   return (
-    <div className="">
-      <form onSubmit={onFormSubmit} className="">
-        <div className="field">
-          <label>{typeSearch}</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(event) => {
-              setLocation(event.target.value);
-            }}
-          />
-          <button>Serach</button>
-        </div>
-      </form>
+    <div className="topnav" onSubmit={onFormSubmit}>
+      <label style={{ fontWeight: "600" }}>{typeSearch} </label>
+      <input
+        type="text"
+        value={location}
+        onChange={(event) => {
+          setLocation(event.target.value);
+        }}
+      />
+      <button>Serach</button>
     </div>
   );
 };

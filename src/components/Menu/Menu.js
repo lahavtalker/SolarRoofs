@@ -5,12 +5,17 @@ import BldList from "../BldList/BldList";
 import "./Menu.css";
 
 const Menu = ({ service, typeSearch }) => {
+  const renderbldList = () => {
+    if (typeSearch === "City:") return <BldList />;
+  };
+
   return (
     <div>
       <h3>{service}</h3>
-      {typeSearch}
-      <SearchBar />
-      <BldList />
+      <SearchBar typeSearch={typeSearch} />
+      <div style={{ height: "72vh", overflowY: "scroll" }}>
+        {renderbldList()}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,27 @@
+.bld-list {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+bld-list td,
+bld-list th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.bld-list tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.bld-list tr:hover {
+  background-color: #ddd;
+}
+
+.bld-list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ffca38;
+  color: #444;
+}
