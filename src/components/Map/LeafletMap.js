@@ -1,16 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import "./LeafletMap.css";
 import * as bldData from "../BeerSheva.json";
 
-// const mapLink = '<a href="http://www.esri.com/">Esri</a>';
-// const wholink =
-//   "i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community";
-
 const startPosition = [31.25181, 34.7913];
 
 const LeafletMap = () => {
-  const [activeMarker, setActiveMarker] = React.useState(null);
+  const [activeMarker, setActiveMarker] = useState(null);
 
   const renderMarkerMap = () => {
     return bldData.features

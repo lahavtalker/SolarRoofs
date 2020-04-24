@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { searchByCity } from "../redux/action";
 import { connect } from "react-redux";
+import { SearchControl } from "react-leaflet-search";
+
 const SearchBar = ({ typeSearch, searchByCity }) => {
   const [location, setLocation] = useState("");
 
@@ -17,13 +19,14 @@ const SearchBar = ({ typeSearch, searchByCity }) => {
       <label style={{ fontWeight: "600", marginRight: "10px" }}>
         {typeSearch}
       </label>
-      <input
+      {/* <input
         type="text"
         value={location}
         onChange={(event) => {
           setLocation(event.target.value);
         }}
-      />
+      /> */}
+      <SearchControl />
       <button onClick={onClickEvent}>Serach</button>
     </div>
   );

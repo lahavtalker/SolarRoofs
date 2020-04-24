@@ -5,9 +5,10 @@ import BldItem from "../BldItem/BldItem";
 import SearchBar from "../SearchBar/SearchBar";
 
 const PrivateService = () => {
-  const renderBldList = () => {
+  const renderBldInformation = () => {
     return <BldItem />;
   };
+
   const renderSearchBar = () => {
     return <SearchBar typeSearch="Address:" />;
   };
@@ -16,7 +17,7 @@ const PrivateService = () => {
       <Menu
         service={"Private Service"}
         typeSearch={"Address:"}
-        funcRenderBld={renderBldList}
+        funcRenderBld={renderBldInformation}
         funcRenderSearchBar={renderSearchBar}
       />
       <LeafletMap />

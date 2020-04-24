@@ -1,0 +1,12 @@
+.info-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 6fr;
+  margin: 5px;
+}
+.info label {
+  color: #444;
+  font-size: 20px;
+  margin-right: 10px;
+  vertical-align: center;
+}

@@ -4,9 +4,7 @@ import * as bld from "../BeerSheva.json";
 import "./Table.css";
 
 const Table = ({ searchValue }) => {
-  const onClickOnBld = (id) => {
-    console.log("I am Click on this bld- " + id);
-  };
+  const onClickOnBld = (id) => {};
 
   const renderTableData = () => {
     const bldData = bld.features;
@@ -38,15 +36,13 @@ const Table = ({ searchValue }) => {
   return (
     <div>
       <table className="bld-list">
-        <tbody>
-          {renderTableHeader()}
-          {renderTableData()}
-        </tbody>
+        {renderTableHeader()}
+        <tbody>{renderTableData()}</tbody>
       </table>
     </div>
   );
 };
 const mapStateToProps = (state) => {
-  return { searchValue: state.valueSearch.location };
+  return { searchValue: state.valueSearch.location, selectBld: state.BldItem };
 };
 export default connect(mapStateToProps)(Table);
