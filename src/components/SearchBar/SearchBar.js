@@ -17,7 +17,7 @@ const SearchBar = ({ typeSearch, searchByCity }) => {
   return (
     <div>
       <SearchComponent />
-      <label style={{ fontWeight: "600", marginRight: "10px" }}>
+      {/* <label style={{ fontWeight: "600", marginRight: "10px" }}>
         {typeSearch}
       </label>
       <input
@@ -27,7 +27,7 @@ const SearchBar = ({ typeSearch, searchByCity }) => {
           setLocation(event.target.value);
         }}
       />
-      <button onClick={onClickEvent}>Serach</button>
+      <button onClick={onClickEvent}>Serach</button> */}
     </div>
   );
 };
