@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as bld from "../BeerSheva.json";
 import "./Table.css";
-
-const Table = ({ searchValue }) => {
-  const onClickOnBld = (id) => {};
+import { changeOsmId } from "../redux//action";
+const Table = ({ searchValue, changeOsmId }) => {
+  const onClickOnBld = (id) => {
+    changeOsmId(id);
+  };
 
   const renderTableData = () => {
     const bldData = bld.features;
@@ -32,7 +34,9 @@ const Table = ({ searchValue }) => {
       </tr>
     );
   };
-
+  useEffect(() => {
+    return () => changeOsmId("");
+  }, [changeOsmId]);
   return (
     <div>
       <table className="bld-list">
@@ -45,4 +49,4 @@ const Table = ({ searchValue }) => {
 const mapStateToProps = (state) => {
   return { searchValue: state.valueSearch.location, selectBld: state.BldItem };
 };
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps, { changeOsmId })(Table);

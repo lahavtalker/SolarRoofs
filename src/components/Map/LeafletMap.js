@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import "./LeafletMap.css";
 import * as bldData from "../BeerSheva.json";
-
+import { connect } from "react-redux";
+import { changeOsmId } from "../redux/action";
 const startPosition = [31.25181, 34.7913];
 
-const LeafletMap = () => {
+const LeafletMap = ({ osmId, changeOsmId }) => {
+  console.log(osmId);
   const [activeMarker, setActiveMarker] = useState(null);
 
   const renderMarkerMap = () => {
     return bldData.features
-      .filter((bld) => bld.properties.nearbyWater === "1")
+      .filter((bld) => bld.properties.osm_id === osmId)
       .map((bld) => (
         <Marker
           key={bld.properties.osm_id}
@@ -56,5 +58,7 @@ const LeafletMap = () => {
     </Map>
   );
 };
-
-export default LeafletMap;
+const mapStateToProps = (state) => {
+  return { osmId: state.osmId };
+};
+export default connect(mapStateToProps, { changeOsmId })(LeafletMap);
