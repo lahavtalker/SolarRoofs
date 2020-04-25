@@ -10,9 +10,11 @@ export const searchByAddress = (itemBld) => {
     payload: itemBld,
   };
 };
-export const changeOsmId = (id) => {
+export const changeOsmId = (id, cord, zoom) => {
   return {
     type: "CHANGE_OSM_ID",
     payload: id,
+    cord,
+    zoom,
   };
 };

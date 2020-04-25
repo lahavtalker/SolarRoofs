@@ -16,7 +16,6 @@ const SearchBar = ({ typeSearch, searchByCity }) => {
 
   return (
     <div>
-      <SearchComponent />
       <label style={{ fontWeight: "600", marginRight: "10px" }}>
         {typeSearch}
       </label>

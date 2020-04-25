@@ -4,10 +4,8 @@ import "./LeafletMap.css";
 import * as bldData from "../BeerSheva.json";
 import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
-const startPosition = [31.25181, 34.7913];
 
-const LeafletMap = ({ osmId, changeOsmId }) => {
-  console.log(osmId);
+const LeafletMap = ({ osmId, lat, lag, zoom }) => {
   const [activeMarker, setActiveMarker] = useState(null);
 
   const renderMarkerMap = () => {
@@ -47,7 +45,7 @@ const LeafletMap = ({ osmId, changeOsmId }) => {
   };
 
   return (
-    <Map center={startPosition} zoom={13}>
+    <Map center={[lag, lat]} zoom={zoom}>
       <TileLayer
         url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         attribution='&copy;  <a href="http://www.esri.com/">Esri</a> '
@@ -59,6 +57,11 @@ const LeafletMap = ({ osmId, changeOsmId }) => {
   );
 };
 const mapStateToProps = (state) => {
-  return { osmId: state.osmId };
+  return {
+    osmId: state.bldIdGeometry.id,
+    lat: state.bldIdGeometry.cord[0],
+    lag: state.bldIdGeometry.cord[1],
+    zoom: state.bldIdGeometry.zoom,
+  };
 };
 export default connect(mapStateToProps, { changeOsmId })(LeafletMap);
