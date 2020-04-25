@@ -3,10 +3,48 @@ import { connect } from "react-redux";
 import * as bld from "../BeerSheva.json";
 import "./Table.css";
 import { changeOsmId } from "../redux//action";
+
 const Table = ({ searchValue, changeOsmId }) => {
   const onClickOnBld = (id) => {
     changeOsmId(id);
   };
+
+  const calculateRating = (data) => {
+    const { height, area, zone, nearForest, nearWater, publicBld } = data;
+    let result = 0;
+
+    if (height > 0 && height < 200) {
+      result += 3;
+    } 
+    else if ((height < 0 && height > -200) || (height < 400 && height > 200)) {
+      result += 2;
+    }
+    else if((height < 1000 && height > 400) || (height < -200 && height > -400)) {
+      result += 1;
+    }
+
+
+
+
+    return result;
+  }
+
+  const rating = (bldProp) => {
+
+    const data = {
+      height: bldProp.Z,
+      area: bldProp.area,
+      zone: bldProp.zone,
+      nearForest: bldProp.nearbyForest,
+      nearWater: bldProp.nearbyWater,
+      publicBld: bldProp.public,
+    }
+
+    let rate = calculateRating(data);
+
+    console.log(data);
+    return rate;
+  }
 
   const renderTableData = () => {
     const bldData = bld.features;
@@ -20,7 +58,7 @@ const Table = ({ searchValue, changeOsmId }) => {
           <td>{bld.properties.name}</td>
           <td>{bld.properties.public}</td>
           <td>{bld.properties.area}</td>
-          <td>{bld.properties.Z}</td>
+          <td>{rating(bld.properties)}</td>
         </tr>
       ));
   };
