@@ -29,19 +29,19 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
       result += 1;
     }
     else if (area > 250 && area < 1000) {
-      results += 2;
+      result += 2;
     }
     else if (area > 5000 && area < 1000) {
-      results += 3;
+      result += 3;
     }
     else if (area > 5000 && area < 10000) {
-      results += 4;
+      result += 4;
     }
     else if (area > 10000 && area < 30000) {
-      results += 5;
+      result += 5;
     }
     else if (area > 30000) {
-      results += 6;
+      result += 6;
     }
 
     // zone check 
