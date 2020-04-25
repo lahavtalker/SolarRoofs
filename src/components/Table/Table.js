@@ -13,17 +13,69 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
     const { height, area, zone, nearForest, nearWater, publicBld } = data;
     let result = 0;
 
+    // height check
     if (height > 0 && height < 200) {
       result += 3;
-    } else if (
-      (height < 0 && height > -200) ||
-      (height < 400 && height > 200)
-    ) {
+    }
+    else if ((height < 0 && height > -200) || (height < 400 && height > 200)) {
       result += 2;
-    } else if (
-      (height < 1000 && height > 400) ||
-      (height < -200 && height > -400)
-    ) {
+    }
+    else if ((height < 1000 && height > 400) || (height < -200 && height > -400)) {
+      result += 1;
+    }
+
+    // area check
+    if (area > 0 && area < 250) {
+      result += 1;
+    }
+    else if (area > 250 && area < 1000) {
+      results += 2;
+    }
+    else if (area > 5000 && area < 1000) {
+      results += 3;
+    }
+    else if (area > 5000 && area < 10000) {
+      results += 4;
+    }
+    else if (area > 10000 && area < 30000) {
+      results += 5;
+    }
+    else if (area > 30000) {
+      results += 6;
+    }
+
+    // zone check 
+    if (zone == "desert") {
+      result += 3;
+    }
+    else if (zone == "eastern") {
+      result += 2;
+    }
+    else {
+      result += 1;
+    }
+
+    // near forest check
+    if (nearForest == true) {
+      result += 1;
+    }
+    else {
+      result += 2;
+    }
+
+    // near water check
+    if (nearWater == true) {
+      result += 1;
+    }
+    else {
+      result += 2;
+    }
+
+    // public building check
+    if (publicBld == true) {
+      result += 2;
+    }
+    else {
       result += 1;
     }
 
