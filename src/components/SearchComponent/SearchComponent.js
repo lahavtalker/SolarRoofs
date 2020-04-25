@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import * as data from "../BeerSheva.json";
 
 const SearchComponent = () => {
-  const [bldAddress, setBldAddress] = useState(null);
+  const [bldAddress, setBldAddress] = useState({});
 
   const distance = (lat1, lon1, lat2, lon2) => {
     const deg2rad = (deg) => {
@@ -35,7 +35,6 @@ const SearchComponent = () => {
     let nearest_point = null;
     let shortest_distance = 1000;
     let current_distance;
-
     data.features.forEach((feature) => {
       current_distance = distance(
         coor.lat,
@@ -48,14 +47,9 @@ const SearchComponent = () => {
         nearest_point = feature;
       }
     });
-
-    console.log("bld:", bldAddress);
-
-    console.log(nearest_point);
-    console.log(shortest_distance);
-    return nearest_point;
+    return { bld: nearest_point, address: info };
   };
-
+  console.log(bldAddress);
   return (
     <SearchControl
       provider="OpenStreetMap"
@@ -63,7 +57,7 @@ const SearchComponent = () => {
       inputPlaceholder="Enter address"
       showMarker={true}
       openSearchOnLoad={true}
-      handler={setBldAddress}
+      handler={(info) => setBldAddress(results(info))}
       closeResultsOnClick={true}
     />
   );
