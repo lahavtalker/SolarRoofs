@@ -3,6 +3,7 @@ import LeafletMap from "../Map/LeafletMap";
 import Menu from "../Menu/Menu";
 import BldItem from "../BldItem/BldItem";
 import SearchComponent from "../SearchComponent/SearchComponent";
+import { useState } from "react";
 
 const PrivateService = () => {
   const renderBldInformation = () => {

@@ -1,31 +1,33 @@
 import { SearchControl } from "react-leaflet-search";
-import React from "react";
-import * as data from "../test.json";
+import React, { useState, useEffect } from "react";
+import * as data from "../BeerSheva.json";
 
-const distance = (lat1, lon1, lat2, lon2) => {
-  const deg2rad = (deg) => {
-    return (deg * Math.PI) / 180;
+const SearchComponent = () => {
+  const [bldAddress, setBldAddress] = useState(null);
+
+  const distance = (lat1, lon1, lat2, lon2) => {
+    const deg2rad = (deg) => {
+      return (deg * Math.PI) / 180;
+    };
+
+    const x1 = deg2rad(lat1);
+    const y1 = deg2rad(lon1);
+    const x2 = deg2rad(lat2);
+    const y2 = deg2rad(lon2);
+
+    const R = 6373;
+    const dy = y2 - y1;
+    const dx = x2 - x1;
+    const a =
+      Math.sin(dx / 2) * Math.sin(dx / 2) +
+      Math.cos(lat1) * Math.cos(lat2) * Math.sin(dy / 2) * Math.sin(dy / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const d = R * c;
+    return d;
   };
 
-  const x1 = deg2rad(lat1);
-  const y1 = deg2rad(lon1);
-  const x2 = deg2rad(lat2);
-  const y2 = deg2rad(lon2);
-
-  const R = 6373;
-  const dy = y2 - y1;
-  const dx = x2 - x1;
-  const a =
-    Math.sin(dx / 2) * Math.sin(dx / 2) +
-    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dy / 2) * Math.sin(dy / 2);
-
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  const d = R * c;
-  return d;
-};
-
-const SearchComponent = (props) => {
   const results = (searchInfo) => {
     const coor = searchInfo.payload.latlng;
     const info = searchInfo.payload.info;
@@ -47,8 +49,11 @@ const SearchComponent = (props) => {
       }
     });
 
+    console.log("bld:", bldAddress);
+
     console.log(nearest_point);
     console.log(shortest_distance);
+    return nearest_point;
   };
 
   return (
@@ -58,7 +63,7 @@ const SearchComponent = (props) => {
       inputPlaceholder="Enter address"
       showMarker={true}
       openSearchOnLoad={true}
-      handler={results}
+      handler={setBldAddress}
       closeResultsOnClick={true}
     />
   );
