@@ -16,66 +16,60 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
     // height check
     if (height > 0 && height < 200) {
       result += 3;
-    }
-    else if ((height < 0 && height > -200) || (height < 400 && height > 200)) {
+    } else if (
+      (height < 0 && height > -200) ||
+      (height < 400 && height > 200)
+    ) {
       result += 2;
-    }
-    else if ((height < 1000 && height > 400) || (height < -200 && height > -400)) {
+    } else if (
+      (height < 1000 && height > 400) ||
+      (height < -200 && height > -400)
+    ) {
       result += 1;
     }
 
     // area check
     if (area > 0 && area < 250) {
       result += 1;
-    }
-    else if (area > 250 && area < 1000) {
+    } else if (area > 250 && area < 1000) {
       result += 2;
-    }
-    else if (area > 5000 && area < 1000) {
+    } else if (area > 5000 && area < 1000) {
       result += 3;
-    }
-    else if (area > 5000 && area < 10000) {
+    } else if (area > 5000 && area < 10000) {
       result += 4;
-    }
-    else if (area > 10000 && area < 30000) {
+    } else if (area > 10000 && area < 30000) {
       result += 5;
-    }
-    else if (area > 30000) {
+    } else if (area > 30000) {
       result += 6;
     }
 
-    // zone check 
-    if (zone == "desert") {
+    // zone check
+    if (zone === "desert") {
       result += 3;
-    }
-    else if (zone == "eastern") {
+    } else if (zone === "eastern") {
       result += 2;
-    }
-    else {
+    } else {
       result += 1;
     }
 
     // near forest check
-    if (nearForest == true) {
+    if (nearForest === true) {
       result += 1;
-    }
-    else {
+    } else {
       result += 2;
     }
 
     // near water check
-    if (nearWater == true) {
+    if (nearWater === true) {
       result += 1;
-    }
-    else {
+    } else {
       result += 2;
     }
 
     // public building check
-    if (publicBld == true) {
+    if (publicBld === true) {
       result += 2;
-    }
-    else {
+    } else {
       result += 1;
     }
 
@@ -129,13 +123,15 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
       </tr>
     );
   };
+
   useEffect(() => {
     return () => changeOsmId({ id: null, zoom: 13, cord: [34.7913, 31.25181] });
   }, [changeOsmId]);
+
   return (
     <div>
       <table className="bld-list">
-        {renderTableHeader()}
+        <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableData()}</tbody>
       </table>
     </div>
@@ -143,9 +139,9 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
 };
 const mapStateToProps = (state) => {
   return {
-    searchValue: state.valueSearch.location,
+    searchValue: state.valueSearch,
     selectBld: state.BldItem,
-    zoom: state.bldIdGeometry.zoom,
+    zoom: state.mapGeometry.zoom,
   };
 };
 export default connect(mapStateToProps, { changeOsmId })(Table);

@@ -1,24 +1,17 @@
 import React, { useState } from "react";
 import { searchByCity } from "../redux/action";
 import { connect } from "react-redux";
-import SearchComponent from "../SearchComponent/SearchComponent";
 
-const SearchBar = ({ typeSearch, searchByCity }) => {
+const SearchBar = ({ searchByCity }) => {
   const [location, setLocation] = useState("");
 
   const onClickSearch = () => {
-    if (location.length > 0) {
-      if (typeSearch === "City:") {
-        searchByCity({ location });
-      }
-    }
+    if (location.length > 0) searchByCity(location);
   };
 
   return (
     <div>
-      <label style={{ fontWeight: "600", marginRight: "10px" }}>
-        {typeSearch}
-      </label>
+      <label style={{ fontWeight: "600", marginRight: "10px" }}>City:</label>
       <input
         type="text"
         value={location}

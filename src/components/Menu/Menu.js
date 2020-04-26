@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import { searchByCity, searchByAddress } from "../redux/action";
 import "./Menu.css";
 import { connect } from "react-redux";
-import BldItem from "../BldItem/BldItem";
 
 const Menu = ({
   service,
   searchByCity,
+  searchByAddress,
   funcRenderBld,
   funcRenderSearchBar,
 }) => {
   useEffect(() => {
-    searchByCity({ location: "" });
+    searchByCity("");
   }, [searchByCity]);
 
   return (
@@ -31,4 +31,4 @@ const Menu = ({
   );
 };
 
-export default connect(null, { searchByCity })(Menu);
+export default connect(null, { searchByCity, searchByAddress })(Menu);

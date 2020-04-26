@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 import "./LeafletMap.css";
 import * as bldData from "../BeerSheva.json";
@@ -58,10 +58,10 @@ const LeafletMap = ({ osmId, lat, lag, zoom }) => {
 };
 const mapStateToProps = (state) => {
   return {
-    osmId: state.bldIdGeometry.id,
-    lat: state.bldIdGeometry.cord[0],
-    lag: state.bldIdGeometry.cord[1],
-    zoom: state.bldIdGeometry.zoom,
+    osmId: state.mapGeometry.id,
+    lat: state.mapGeometry.cord[0],
+    lag: state.mapGeometry.cord[1],
+    zoom: state.mapGeometry.zoom,
   };
 };
 export default connect(mapStateToProps, { changeOsmId })(LeafletMap);

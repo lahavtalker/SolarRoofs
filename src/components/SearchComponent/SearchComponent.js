@@ -1,10 +1,10 @@
 import { SearchControl } from "react-leaflet-search";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import * as data from "../BeerSheva.json";
+import { connect } from "react-redux";
+import { searchByAddress } from "../redux/action";
 
-const SearchComponent = () => {
-  const [bldAddress, setBldAddress] = useState({});
-
+const SearchComponent = ({ searchByAddress, bldProperties }) => {
   const distance = (lat1, lon1, lat2, lon2) => {
     const deg2rad = (deg) => {
       return (deg * Math.PI) / 180;
@@ -47,9 +47,10 @@ const SearchComponent = () => {
         nearest_point = feature;
       }
     });
+
     return { bld: nearest_point, address: info };
   };
-  console.log(bldAddress);
+
   return (
     <SearchControl
       provider="OpenStreetMap"
@@ -57,10 +58,21 @@ const SearchComponent = () => {
       inputPlaceholder="Enter address"
       showMarker={true}
       openSearchOnLoad={true}
-      handler={(info) => setBldAddress(results(info))}
+      handler={(info) => {
+        const bld = results(info);
+        searchByAddress(bld);
+      }}
       closeResultsOnClick={true}
     />
   );
 };
 
-export default SearchComponent;
+const mapStateToprops = (state) => {
+  return {
+    bldProperties: state.valueSearch.bld,
+    address: state.valueSearch.address,
+    mapGeometry: state.mapGeometry,
+  };
+};
+
+export default connect(mapStateToprops, { searchByAddress })(SearchComponent);

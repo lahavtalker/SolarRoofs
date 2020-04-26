@@ -17,11 +17,16 @@ table {
 }
 
 .bld-list tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
+}
+.bld-list tr {
+  background-color: #ffffff;
 }
 
 .bld-list tr:hover {
-  background-color: #ddd;
+  background-color: rgba(2, 0, 122, 0.452);
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .bld-list th {
