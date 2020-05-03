@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/SolarRoofs/static/css/main.ab16f8ef.chunk.css",
+    "main.js": "/SolarRoofs/static/js/main.87c21c88.chunk.js",
+    "main.js.map": "/SolarRoofs/static/js/main.87c21c88.chunk.js.map",
+    "runtime-main.js": "/SolarRoofs/static/js/runtime-main.2ea47c15.js",
+    "runtime-main.js.map": "/SolarRoofs/static/js/runtime-main.2ea47c15.js.map",
+    "static/css/2.8d863f11.chunk.css": "/SolarRoofs/static/css/2.8d863f11.chunk.css",
+    "static/js/2.fe62783e.chunk.js": "/SolarRoofs/static/js/2.fe62783e.chunk.js",
+    "static/js/2.fe62783e.chunk.js.map": "/SolarRoofs/static/js/2.fe62783e.chunk.js.map",
+    "index.html": "/SolarRoofs/index.html",
+    "precache-manifest.b15533a39af5cb90c61e8886c0087962.js": "/SolarRoofs/precache-manifest.b15533a39af5cb90c61e8886c0087962.js",
+    "service-worker.js": "/SolarRoofs/service-worker.js",
+    "static/css/2.8d863f11.chunk.css.map": "/SolarRoofs/static/css/2.8d863f11.chunk.css.map",
+    "static/css/main.ab16f8ef.chunk.css.map": "/SolarRoofs/static/css/main.ab16f8ef.chunk.css.map",
+    "static/js/2.fe62783e.chunk.js.LICENSE.txt": "/SolarRoofs/static/js/2.fe62783e.chunk.js.LICENSE.txt",
+    "static/media/Logo.png": "/SolarRoofs/static/media/Logo.70ccc770.png",
+    "static/media/index.css": "/SolarRoofs/static/media/backroundPic.5559047b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2ea47c15.js",
+    "static/css/2.8d863f11.chunk.css",
+    "static/js/2.fe62783e.chunk.js",
+    "static/css/main.ab16f8ef.chunk.css",
+    "static/js/main.87c21c88.chunk.js"
+  ]
+}
