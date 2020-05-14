@@ -2,9 +2,9 @@ import { SearchControl } from "react-leaflet-search";
 import React from "react";
 import * as data from "../BeerSheva.json";
 import { connect } from "react-redux";
-import { searchByAddress } from "../redux/action";
+import { searchByAddress, changeOsmId } from "../redux/action";
 
-const SearchComponent = ({ searchByAddress, bldProperties }) => {
+const SearchComponent = ({ searchByAddress, changeOsmId }) => {
   const distance = (lat1, lon1, lat2, lon2) => {
     const deg2rad = (deg) => {
       return (deg * Math.PI) / 180;
@@ -50,7 +50,9 @@ const SearchComponent = ({ searchByAddress, bldProperties }) => {
 
     return { bld: nearest_point, address: info };
   };
-
+  React.useEffect(() => {
+    return () => changeOsmId({ id: null, zoom: 13, cord: [34.7913, 31.25181] });
+  }, [changeOsmId]);
   return (
     <SearchControl
       provider="OpenStreetMap"
@@ -61,6 +63,11 @@ const SearchComponent = ({ searchByAddress, bldProperties }) => {
       handler={(info) => {
         const bld = results(info);
         searchByAddress(bld);
+        changeOsmId({
+          id: bld.bld.properties.osm_id,
+          zoom: 17,
+          cord: bld.bld.geometry.coordinates[0],
+        });
       }}
       closeResultsOnClick={true}
     />
@@ -68,11 +75,12 @@ const SearchComponent = ({ searchByAddress, bldProperties }) => {
 };
 
 const mapStateToprops = (state) => {
+  console.log(state.valueSearch.bld);
   return {
-    bldProperties: state.valueSearch.bld,
-    address: state.valueSearch.address,
     mapGeometry: state.mapGeometry,
   };
 };
 
-export default connect(mapStateToprops, { searchByAddress })(SearchComponent);
+export default connect(mapStateToprops, { searchByAddress, changeOsmId })(
+  SearchComponent
+);

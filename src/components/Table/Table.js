@@ -10,6 +10,7 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
   };
 
   const calculateRating = (data) => {
+    console.log(("RATING", data));
     const { height, area, zone, nearForest, nearWater, publicBld } = data;
     let result = 0;
 

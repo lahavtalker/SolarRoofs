@@ -4,24 +4,14 @@ import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
 
 const BldItem = ({ bldProperties, address }) => {
-  const checkNndefined = () => {
+  const checkUndefined = () => {
     if (bldProperties !== undefined) {
-      if (bldProperties.properties.public === "public")
-        bldProperties.properties.public = "מבנה זה ציבורי";
-      else bldProperties.properties.public = "מבנה זה אינו ציבורי";
-      if (bldProperties.properties.nearbyForest === "1")
-        bldProperties.properties.nearbyForest = "מבנה זה באיזור מיוער";
-      else bldProperties.properties.nearbyForest = "מבנה זה אינו באיזור מיוער";
-      if (bldProperties.properties.nearbyWater === "1")
-        bldProperties.properties.nearbyWater = "מבנה זה באיזור נמוך של ואדי";
-      else bldProperties.properties.nearbyWater = "מבנה זה לא באיזור ואדי";
-
       return true;
     }
     return false;
   };
 
-  if (checkNndefined()) {
+  if (checkUndefined()) {
     return (
       <div className="info-grid-container">
         <div className="info address">
