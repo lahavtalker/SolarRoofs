@@ -6,6 +6,19 @@ import { changeOsmId } from "../redux/action";
 const BldItem = ({ bldProperties, address }) => {
   const checkUndefined = () => {
     if (bldProperties !== undefined) {
+      bldProperties.properties.public === null
+        ? (bldProperties.properties.public = "אינו מבנה ציבורי")
+        : (bldProperties.properties.public = "מבנה ציבורי");
+      bldProperties.properties.zone === "desert"
+        ? (bldProperties.properties.zone = "איזור מדברי")
+        : (bldProperties.properties.zone = "");
+      bldProperties.properties.nearbyForest === null
+        ? (bldProperties.properties.nearbyForest = "אינו באיזור מיוער")
+        : (bldProperties.properties.nearbyForest = "איזור מיוער");
+      bldProperties.properties.nearbyWater === null
+        ? (bldProperties.properties.nearbyWater = "אינו באיזור ואדי")
+        : (bldProperties.properties.nearbyWater = "קרוב לואדי");
+
       return true;
     }
     return false;
@@ -15,47 +28,47 @@ const BldItem = ({ bldProperties, address }) => {
     return (
       <div className="info-grid-container">
         <div className="info address">
-          <h3>Address:</h3>
+          <h3>כתובת</h3>
           <p>{address}</p>
         </div>
         <div className="info city">
-          <h3>City:</h3>
+          <h3>עיר</h3>
           <p> {bldProperties.properties.name_2}</p>
         </div>
 
         <div className="info zone">
-          <h3>Zone:</h3>
+          <h3>איזור</h3>
           <p>{bldProperties.properties.zone}</p>
         </div>
         <div className="info public">
-          <h3>Public:</h3>
+          <h3>ציבורי/פרטי</h3>
           <p>{bldProperties.properties.public}</p>
         </div>
         <div className="info area">
-          <h3>Area:</h3>
+          <h3>שטח</h3>
           <p>{bldProperties.properties.area}</p>
         </div>
         <div className="info Z">
-          <h3>Z:</h3>
+          <h3>גובה</h3>
           <p>{bldProperties.properties.Z}</p>
         </div>
 
         <div className="info forrest">
-          <h3>Forrest:</h3>
+          <h3>איזור מיוער</h3>
           <p> {bldProperties.properties.nearbyForest}</p>
         </div>
         <div className="info waterway">
-          <h3>Waterway:</h3>
+          <h3>איזור ואדיות</h3>
           <p> {bldProperties.properties.nearbyWater}</p>
         </div>
         <div className="info potential">
-          <h3>Rating:</h3>
+          <h3>דירוג</h3>
           <p> {}</p>
         </div>
-        <div className="info summary">
+        {/* <div className="info summary">
           <h3> Summary:</h3>
           <p> {}</p>
-        </div>
+        </div> */}
       </div>
     );
   }
