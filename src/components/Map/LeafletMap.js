@@ -5,7 +5,7 @@ import * as bldData from "../BeerSheva.json";
 import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
 
-const LeafletMap = ({ osmId, lat, lag, zoom }) => {
+const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   const [activeMarker, setActiveMarker] = useState(null);
 
   const renderMarkerMap = () => {
@@ -28,6 +28,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom }) => {
     return (
       activeMarker && (
         <Popup
+          style={{ background: "black" }}
           position={[
             activeMarker.geometry.coordinates[0][1],
             activeMarker.geometry.coordinates[0][0],
@@ -37,7 +38,19 @@ const LeafletMap = ({ osmId, lat, lag, zoom }) => {
           }}
         >
           <div>
-            <h2>{"area: " + activeMarker.properties.area}</h2>
+            <h2>{" עיר: " + activeMarker.properties.name_2}</h2>
+            <h2>{address !== undefined ? " כתובת: " + address : null}</h2>
+            <h2>
+              {activeMarker.properties.name !== null
+                ? " שם: " + activeMarker.properties.name
+                : null}
+            </h2>
+            <h2>{"שטח הגג: " + activeMarker.properties.area}</h2>
+            <h2>{" גובה: " + activeMarker.properties.Z}</h2>
+            <h2>{" איזור: " + activeMarker.properties.zone}</h2>
+
+            <p>תמונה של המבנה</p>
+            <button>חישוב שטח פנוי</button>
           </div>
         </Popup>
       )
@@ -62,6 +75,7 @@ const mapStateToProps = (state) => {
     lat: state.mapGeometry.cord[0],
     lag: state.mapGeometry.cord[1],
     zoom: state.mapGeometry.zoom,
+    address: state.valueSearch.address,
   };
 };
 export default connect(mapStateToProps, { changeOsmId })(LeafletMap);

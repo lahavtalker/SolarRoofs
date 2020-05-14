@@ -75,7 +75,6 @@ const SearchComponent = ({ searchByAddress, changeOsmId }) => {
 };
 
 const mapStateToprops = (state) => {
-  console.log(state.valueSearch.bld);
   return {
     mapGeometry: state.mapGeometry,
   };
