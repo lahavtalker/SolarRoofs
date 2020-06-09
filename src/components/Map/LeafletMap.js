@@ -37,7 +37,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
             setActiveMarker(null);
           }}
         >
-          <div>
+          <div className="popup">
             <h2>{" עיר: " + activeMarker.properties.name_2}</h2>
             <h2>{address !== undefined ? " כתובת: " + address : null}</h2>
             <h2>
@@ -49,7 +49,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
             <h2>{" גובה: " + activeMarker.properties.Z}</h2>
             <h2>{" איזור: " + activeMarker.properties.zone}</h2>
 
-            <p>תמונה של המבנה</p>
+            <img className="img-bld" src="" />
             <button>חישוב שטח פנוי</button>
           </div>
         </Popup>

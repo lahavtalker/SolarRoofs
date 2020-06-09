@@ -22,9 +22,9 @@ const Navbar = () => {
             <li>
               <Link to="/service/organizational">Organizational service</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/service/national">National service</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

@@ -5,3 +5,16 @@
   margin: 5px;
   border-radius: 2%;
 }
+.popup {
+  width: 100%;
+  text-align: right;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px;
+  border: solid 1px black;
+}
+.img-bld {
+  width: 150px;
+  height: 150px;
+  /* background: blueviolet; */
+}

@@ -73,7 +73,11 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
       result += 1;
     }
 
-    return result;
+    if (result >= 15) return "פוטנציאל גבוהה";
+
+    if (result >= 10 && result < 15) return " פוטנציאל טוב";
+
+    if (result < 10) return " פוטנציאל נמוך";
   };
 
   const rating = (bldProp) => {
@@ -119,7 +123,7 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
         <th>Address</th>
         <th>Public</th>
         <th>Area</th>
-        <th>Rating</th>
+        <th>Potential</th>
       </tr>
     );
   };

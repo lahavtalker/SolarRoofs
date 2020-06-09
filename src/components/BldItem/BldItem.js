@@ -3,7 +3,7 @@ import "./BldItem.css";
 import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
 
-const BldItem = ({ bldProperties, address }) => {
+const BldItem = ({ bldProperties, address, rating }) => {
   const checkUndefined = () => {
     if (bldProperties !== undefined) {
       bldProperties.properties.public === null
@@ -28,45 +28,45 @@ const BldItem = ({ bldProperties, address }) => {
     return (
       <div className="info-grid-container">
         <div className="info address">
-          <h3>כתובת</h3>
+          <h4>כתובת</h4>
           <p>{address}</p>
         </div>
         <div className="info city">
-          <h3>עיר</h3>
+          <h4>עיר</h4>
           <p> {bldProperties.properties.name_2}</p>
         </div>
 
         <div className="info zone">
-          <h3>איזור</h3>
+          <h4>איזור</h4>
           <p>{bldProperties.properties.zone}</p>
         </div>
         <div className="info public">
-          <h3>ציבורי/פרטי</h3>
+          <h4>ציבורי/פרטי</h4>
           <p>{bldProperties.properties.public}</p>
         </div>
         <div className="info area">
-          <h3>שטח</h3>
+          <h4>שטח</h4>
           <p>{bldProperties.properties.area}</p>
         </div>
         <div className="info Z">
-          <h3>גובה</h3>
+          <h4>גובה</h4>
           <p>{bldProperties.properties.Z}</p>
         </div>
 
         <div className="info forrest">
-          <h3>איזור מיוער</h3>
+          <h4>איזור מיוער</h4>
           <p> {bldProperties.properties.nearbyForest}</p>
         </div>
         <div className="info waterway">
-          <h3>איזור ואדיות</h3>
+          <h4>איזור ואדיות</h4>
           <p> {bldProperties.properties.nearbyWater}</p>
         </div>
         <div className="info potential">
-          <h3>דירוג</h3>
-          <p> {}</p>
+          <h4>פוטנציאל</h4>
+          <p> {rating}</p>
         </div>
         {/* <div className="info summary">
-          <h3> Summary:</h3>
+          <h4> Summary:</h4>
           <p> {}</p>
         </div> */}
       </div>
@@ -79,6 +79,7 @@ const mapStateToprops = (state) => {
   return {
     bldProperties: state.valueSearch.bld,
     address: state.valueSearch.address,
+    rating: state.mapGeometry.rating,
   };
 };
 
