@@ -53,6 +53,77 @@ const SearchComponent = ({ searchByAddress, changeOsmId }) => {
   React.useEffect(() => {
     return () => changeOsmId({ id: null, zoom: 13, cord: [34.7913, 31.25181] });
   }, [changeOsmId]);
+
+  const calculateRating = (data) => {
+    const { height, area, zone, nearForest, nearWater, publicBld } = data;
+    let result = 0;
+
+    // height check
+    if (height > 0 && height < 200) {
+      result += 3;
+    } else if (
+      (height < 0 && height > -200) ||
+      (height < 400 && height > 200)
+    ) {
+      result += 2;
+    } else if (
+      (height < 1000 && height > 400) ||
+      (height < -200 && height > -400)
+    ) {
+      result += 1;
+    }
+
+    // area check
+    if (area > 0 && area < 250) {
+      result += 1;
+    } else if (area > 250 && area < 1000) {
+      result += 2;
+    } else if (area > 5000 && area < 1000) {
+      result += 3;
+    } else if (area > 5000 && area < 10000) {
+      result += 4;
+    } else if (area > 10000 && area < 30000) {
+      result += 5;
+    } else if (area > 30000) {
+      result += 6;
+    }
+
+    // zone check
+    if (zone === "desert") {
+      result += 3;
+    } else if (zone === "eastern") {
+      result += 2;
+    } else {
+      result += 1;
+    }
+
+    // near forest check
+    if (nearForest === true) {
+      result += 1;
+    } else {
+      result += 2;
+    }
+
+    // near water check
+    if (nearWater === true) {
+      result += 1;
+    } else {
+      result += 2;
+    }
+
+    // public building check
+    if (publicBld === true) {
+      result += 2;
+    } else {
+      result += 1;
+    }
+    if (result >= 15) return "פוטנציאל גבוהה";
+
+    if (result >= 10 && result < 15) return " פוטנציאל טוב";
+
+    if (result < 10) return " פוטנציאל נמוך";
+  };
+
   return (
     <SearchControl
       provider="OpenStreetMap"
@@ -69,78 +140,10 @@ const SearchComponent = ({ searchByAddress, changeOsmId }) => {
           cord: bld.bld.geometry.coordinates[0],
           rating: calculateRating(bld.bld.properties),
         });
-        console.log(calculateRating(bld.bld.properties));
       }}
       closeResultsOnClick={true}
     />
   );
-};
-
-const calculateRating = (data) => {
-  const { height, area, zone, nearForest, nearWater, publicBld } = data;
-  let result = 0;
-
-  // height check
-  if (height > 0 && height < 200) {
-    result += 3;
-  } else if ((height < 0 && height > -200) || (height < 400 && height > 200)) {
-    result += 2;
-  } else if (
-    (height < 1000 && height > 400) ||
-    (height < -200 && height > -400)
-  ) {
-    result += 1;
-  }
-
-  // area check
-  if (area > 0 && area < 250) {
-    result += 1;
-  } else if (area > 250 && area < 1000) {
-    result += 2;
-  } else if (area > 5000 && area < 1000) {
-    result += 3;
-  } else if (area > 5000 && area < 10000) {
-    result += 4;
-  } else if (area > 10000 && area < 30000) {
-    result += 5;
-  } else if (area > 30000) {
-    result += 6;
-  }
-
-  // zone check
-  if (zone === "desert") {
-    result += 3;
-  } else if (zone === "eastern") {
-    result += 2;
-  } else {
-    result += 1;
-  }
-
-  // near forest check
-  if (nearForest === true) {
-    result += 1;
-  } else {
-    result += 2;
-  }
-
-  // near water check
-  if (nearWater === true) {
-    result += 1;
-  } else {
-    result += 2;
-  }
-
-  // public building check
-  if (publicBld === true) {
-    result += 2;
-  } else {
-    result += 1;
-  }
-  if (result >= 15) return "פוטנציאל גבוהה";
-
-  if (result >= 10 && result < 15) return " פוטנציאל טוב";
-
-  if (result < 10) return " פוטנציאל נמוך";
 };
 
 const mapStateToprops = (state) => {

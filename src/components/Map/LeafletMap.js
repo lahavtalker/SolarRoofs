@@ -4,6 +4,8 @@ import "./LeafletMap.css";
 import * as bldData from "../BeerSheva.json";
 import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
+import "./369912231.png";
+import roof from "./369912231.png";
 
 const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   const [activeMarker, setActiveMarker] = useState(null);
@@ -49,7 +51,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
             <h2>{" גובה: " + activeMarker.properties.Z}</h2>
             <h2>{" איזור: " + activeMarker.properties.zone}</h2>
 
-            <img className="img-bld" src="" />
+            <img className="img-bld" src={roof} />
             <button>חישוב שטח פנוי</button>
           </div>
         </Popup>
@@ -58,15 +60,17 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   };
 
   return (
-    <Map center={[lag, lat]} zoom={zoom}>
-      <TileLayer
-        url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-        attribution='&copy;  <a href="http://www.esri.com/">Esri</a> '
-        maxZoom={18}
-      />
-      {renderMarkerMap()}
-      {renderActiveMarker()}
-    </Map>
+    <div>
+      <Map center={[lag, lat]} zoom={zoom}>
+        <TileLayer
+          url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+          attribution='&copy;  <a href="http://www.esri.com/">Esri</a> '
+          maxZoom={18}
+        />
+        {renderMarkerMap()}
+        {renderActiveMarker()}
+      </Map>
+    </div>
   );
 };
 const mapStateToProps = (state) => {
