@@ -4,12 +4,12 @@ import "./LeafletMap.css";
 import * as bldData from "../BeerSheva.json";
 import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
-import "./369912231.png";
-import roof from "./369912231.png";
 
 const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   const [activeMarker, setActiveMarker] = useState(null);
 
+  const roofimg = new Image();
+  roofimg.src = `./${osmId}.png`;
   const renderMarkerMap = () => {
     return bldData.features
       .filter((bld) => bld.properties.osm_id === osmId)
@@ -26,6 +26,11 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
         />
       ));
   };
+
+  const clickCalcArea = () => {
+    return <div>השטח הפנוי הוא :</div>;
+  };
+
   const renderActiveMarker = () => {
     return (
       activeMarker && (
@@ -50,9 +55,8 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
             <h2>{"שטח הגג: " + activeMarker.properties.area}</h2>
             <h2>{" גובה: " + activeMarker.properties.Z}</h2>
             <h2>{" איזור: " + activeMarker.properties.zone}</h2>
-
-            <img className="img-bld" src={roof} />
-            <button>חישוב שטח פנוי</button>
+            <img className="img-bld" src={require(`./${osmId}.png`)} />
+            <button onClick={() => clickCalcArea}>חישוב שטח פנוי</button>
           </div>
         </Popup>
       )
