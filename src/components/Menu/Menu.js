@@ -15,7 +15,7 @@ const Menu = ({
 
   return (
     <div>
-      <h3>{service}</h3>
+      <h1 style={{ color: "white" }}>{service}</h1>
       {funcRenderSearchBar()}
       <hr
         style={{

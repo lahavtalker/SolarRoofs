@@ -11,7 +11,17 @@ const SearchBar = ({ searchByCity }) => {
 
   return (
     <div>
-      <label style={{ fontWeight: "600", marginRight: "10px" }}>City:</label>
+      <label
+        style={{
+          fontWeight: "600",
+          marginRight: "10px",
+          color: "white",
+          background: "rgba(68, 68, 68, 0.288)",
+          fontSize: "20px",
+        }}
+      >
+        City:
+      </label>
       <input
         type="text"
         value={location}
