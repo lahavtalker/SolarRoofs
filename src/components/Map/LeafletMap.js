@@ -4,17 +4,16 @@ import "./LeafletMap.css";
 import * as bldData from "../BeerSheva.json";
 import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
-import img1 from "./154213256.png";
-import img2 from "./369912231.png";
+import { server } from "../../api/axios";
 
 const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   const [activeMarker, setActiveMarker] = useState(null);
+  const [clickCalc, setClickCalc] = useState(false);
 
   const roofimg = () => {
     if (osmId === "154213256" || osmId === "369912231") return osmId;
     else return "def";
   };
-  // roofimg.src = `./${osmId}.png`;
   const renderMarkerMap = () => {
     return bldData.features
       .filter((bld) => bld.properties.osm_id === osmId)
@@ -32,9 +31,13 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
       ));
   };
 
-  const clickCalcArea = () => {
-    return <div>השטח הפנוי הוא :</div>;
+  const clickCalcArea = async () => {
+    const x = await server.get(`/getArea?osmId=${osmId}`);
+    console.log("sss", x);
+
+    // return <div>השטח הפנוי הוא : {}</div>;
   };
+  clickCalcArea();
 
   const renderActiveMarker = () => {
     return (
@@ -47,6 +50,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
           ]}
           onClose={() => {
             setActiveMarker(null);
+            setClickCalc(false);
           }}
         >
           <div className="popup">
@@ -61,15 +65,16 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
             <h2>{" גובה: " + activeMarker.properties.Z}</h2>
             <h2>{" איזור: " + activeMarker.properties.zone}</h2>
             <img className="img-bld" src={require(`./${roofimg()}.png`)} />
-            <button onClick={() => clickCalcArea}>חישוב שטח פנוי</button>
+            <button onClick={() => setClickCalc(true)}>חישוב שטח פנוי</button>
           </div>
+          {clickCalc && clickCalcArea()}
         </Popup>
       )
     );
   };
-
   return (
     <div>
+      {clickCalcArea().props}
       <Map center={[lag, lat]} zoom={zoom}>
         <TileLayer
           url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
