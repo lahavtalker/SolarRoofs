@@ -11,8 +11,8 @@ CORS(app)
 def home(index=None):
     print(index)
     if request.method == 'GET':
-        res = analyze(index)
-        return {'response': res}
+        # res = analyze(index)
+        return {'response': 2}
     else:
         return {'response': 'error'}
 

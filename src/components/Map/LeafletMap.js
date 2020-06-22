@@ -34,7 +34,8 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
   const clickCalcArea = () => {
     return server.get(`/getArea/${osmId}`).then((res) => {
       if (res) {
-        const x = (area.properties.area * res.data.response) / 100;
+        let x = area;
+        x = (x.properties.area * res.data.response) / 100;
         setMarkerMessage(x);
       }
     });
