@@ -1,9 +1,13 @@
-from flask import Flask
+from flask import Flask, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
-@app.route('/')
+@app.route('/getArea', methods=['GET'])
 def home():
-    print("+++++++++++++PORT 5000++++++++++++")
-    return 'Hello World'
+    if request.method == 'GET':
+        return {'response': 'get'}
+    else:
+        return {'response': 'error'}

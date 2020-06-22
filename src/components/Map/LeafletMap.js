@@ -32,12 +32,13 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   };
 
   const clickCalcArea = async () => {
-    const x = await server.get(`/getArea?osmId=${osmId}`);
-    console.log("sss", x);
+    await server.get('/getArea').then(res => {console.log(res.data)})
+    // const x = await server.get(`/getArea`);
+    // console.log("sss", x);
 
-    // return <div>השטח הפנוי הוא : {}</div>;
+    // // return <div>השטח הפנוי הוא : {}</div>;
   };
-  clickCalcArea();
+  console.log(clickCalcArea());
 
   const renderActiveMarker = () => {
     return (
@@ -74,7 +75,6 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   };
   return (
     <div>
-      {clickCalcArea().props}
       <Map center={[lag, lat]} zoom={zoom}>
         <TileLayer
           url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
