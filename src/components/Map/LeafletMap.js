@@ -32,13 +32,12 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   };
 
   const clickCalcArea = async () => {
-    await server.get('/getArea').then(res => {console.log(res.data)})
+    await server.get(`/getArea/${osmId}`).then(res => {console.log(res.data)})
     // const x = await server.get(`/getArea`);
     // console.log("sss", x);
 
     // // return <div>השטח הפנוי הוא : {}</div>;
   };
-  console.log(clickCalcArea());
 
   const renderActiveMarker = () => {
     return (
