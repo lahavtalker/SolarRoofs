@@ -5,8 +5,11 @@ def analyze(img_index):
     img = cv2.imread('backend/{}.png'.format(img_index), -1)
     edge = cv2.imread('backend/{}.png'.format(img_index), -1)
 
-    print(img_index + '.png')
-    print(img, edge)
+    if(img is None or edge is None):
+        return False
+
+    # print(img_index + '.png')
+    # print(img, edge)
 
     max_cnt = 0
     cnt = None

@@ -33,10 +33,14 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
 
   const clickCalcArea = () => {
     return server.get(`/getArea/${osmId}`).then((res) => {
-      if (res) {
+      if (res.data.response !== false) {
         let x = area;
         x = (x.properties.area * res.data.response) / 100;
         setMarkerMessage("השטח הפנוי המוערך הוא:" + x);
+        
+      }
+      else {
+        setMarkerMessage('אין תמונה במאגר')
       }
     });
   };
