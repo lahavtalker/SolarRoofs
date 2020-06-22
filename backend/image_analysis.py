@@ -7,10 +7,7 @@ def analyze(img_index):
 
     if(img is None or edge is None):
         return False
-
-    # print(img_index + '.png')
-    # print(img, edge)
-
+        
     max_cnt = 0
     cnt = None
 

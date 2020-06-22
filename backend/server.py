@@ -10,7 +10,6 @@ CORS(app)
 
 @app.route('/getArea/<index>', methods=['GET'])
 def home(index=None):
-    print(index)
     if request.method == 'GET':
          res = analyze(index)
          return {'response': res}
