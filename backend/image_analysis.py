@@ -2,9 +2,10 @@ import cv2
 
 def analyze(img_index):
 
-    img = cv2.imread('/369912231.png', -1)
-    edge = cv2.imread('/369912231.png', -1)
+    img = cv2.imread('backend/{}.png'.format(img_index), -1)
+    edge = cv2.imread('backend/{}.png'.format(img_index), -1)
 
+    print(img_index + '.png')
     print(img, edge)
 
     max_cnt = 0
@@ -48,4 +49,4 @@ def analyze(img_index):
             object_count += 1
             total_object_area += cv2.contourArea(approx, True)
 
-    return total_object_area / max_cnt * 100
+    return (max_cnt - total_object_area) / max_cnt * 100

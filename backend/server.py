@@ -5,9 +5,8 @@ from image_analysis import analyze
 
 app = Flask(__name__)
 CORS(app)
-
-
-<<<<<<< HEAD
+ 
+ 
 @app.route('/getArea/<index>', methods=['GET'])
 def home(index=None):
     print(index)
