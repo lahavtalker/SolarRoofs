@@ -32,7 +32,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   };
 
   const clickCalcArea = () => {
-    return server.get("/getArea").then((res) => {
+    return server.get(`/getArea/${osmId}`).then((res) => {
       setMarkerMessage(res.data.response);
     });
   };
