@@ -8,8 +8,8 @@ import { server } from "../../api/axios";
 
 const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
   const [activeMarker, setActiveMarker] = useState(null);
-  const [clickCalc, setClickCalc] = useState(false);
-
+  //const [clickCalc, setClickCalc] = useState(false);
+  const [markerMessage, setMarkerMessage] = useState();
   const roofimg = () => {
     if (osmId === "154213256" || osmId === "369912231") return osmId;
     else return "def";
@@ -31,14 +31,11 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
       ));
   };
 
-  const clickCalcArea = async () => {
-    await server.get('/getArea').then(res => {console.log(res.data)})
-    // const x = await server.get(`/getArea`);
-    // console.log("sss", x);
-
-    // // return <div>השטח הפנוי הוא : {}</div>;
+  const clickCalcArea = () => {
+    return server.get("/getArea").then((res) => {
+      setMarkerMessage(res.data.response);
+    });
   };
-  console.log(clickCalcArea());
 
   const renderActiveMarker = () => {
     return (
@@ -51,7 +48,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
           ]}
           onClose={() => {
             setActiveMarker(null);
-            setClickCalc(false);
+            setMarkerMessage(null);
           }}
         >
           <div className="popup">
@@ -66,9 +63,9 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
             <h2>{" גובה: " + activeMarker.properties.Z}</h2>
             <h2>{" איזור: " + activeMarker.properties.zone}</h2>
             <img className="img-bld" src={require(`./${roofimg()}.png`)} />
-            <button onClick={() => setClickCalc(true)}>חישוב שטח פנוי</button>
+            <button onClick={clickCalcArea}>חישוב שטח פנוי</button>
           </div>
-          {clickCalc && clickCalcArea()}
+          <div>{markerMessage}</div>
         </Popup>
       )
     );
