@@ -31,19 +31,10 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
       ));
   };
 
-<<<<<<< HEAD
-  const clickCalcArea = async () => {
-    await server.get(`/getArea/${osmId}`).then(res => {console.log(res.data)})
-    // const x = await server.get(`/getArea`);
-    // console.log("sss", x);
-
-    // // return <div>השטח הפנוי הוא : {}</div>;
-=======
   const clickCalcArea = () => {
     return server.get("/getArea").then((res) => {
       setMarkerMessage(res.data.response);
     });
->>>>>>> 19a80b1c9dc598f23bdf18d6b0071b48f8e2f38f
   };
 
   const renderActiveMarker = () => {
