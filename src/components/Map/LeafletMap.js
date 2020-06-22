@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { changeOsmId } from "../redux/action";
 import { server } from "../../api/axios";
 
-const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
+const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
   const [activeMarker, setActiveMarker] = useState(null);
   //const [clickCalc, setClickCalc] = useState(false);
   const [markerMessage, setMarkerMessage] = useState();
@@ -33,7 +33,11 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address }) => {
 
   const clickCalcArea = () => {
     return server.get(`/getArea/${osmId}`).then((res) => {
-      setMarkerMessage(res.data.response);
+      if (res) {
+        let x = area;
+        x = (x.properties.area * res.data.response) / 100;
+        setMarkerMessage(x);
+      }
     });
   };
 
@@ -91,6 +95,7 @@ const mapStateToProps = (state) => {
     lag: state.mapGeometry.cord[1],
     zoom: state.mapGeometry.zoom,
     address: state.valueSearch.address,
+    area: state.valueSearch.bld,
   };
 };
 export default connect(mapStateToProps, { changeOsmId })(LeafletMap);
