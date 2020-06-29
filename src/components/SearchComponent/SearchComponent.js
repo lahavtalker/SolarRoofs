@@ -55,21 +55,16 @@ const SearchComponent = ({ searchByAddress, changeOsmId }) => {
   }, [changeOsmId]);
 
   const calculateRating = (data) => {
-    const { height, area, zone, nearForest, nearWater, publicBld } = data;
+    let { Z, area, zone, nearbyForest, nearbyWater, publicBld } = data;
     let result = 0;
-
+    publicBld = data.public;
+    area = Number(area);
     // height check
-    if (height > 0 && height < 200) {
+    if (Z > 0 && Z < 200) {
       result += 3;
-    } else if (
-      (height < 0 && height > -200) ||
-      (height < 400 && height > 200)
-    ) {
+    } else if ((Z < 0 && Z > -200) || (Z < 400 && Z > 200)) {
       result += 2;
-    } else if (
-      (height < 1000 && height > 400) ||
-      (height < -200 && height > -400)
-    ) {
+    } else if ((Z < 1000 && Z > 400) || (Z < -200 && Z > -400)) {
       result += 1;
     }
 
@@ -78,7 +73,7 @@ const SearchComponent = ({ searchByAddress, changeOsmId }) => {
       result += 1;
     } else if (area > 250 && area < 1000) {
       result += 2;
-    } else if (area > 5000 && area < 1000) {
+    } else if (area < 5000 && area > 1000) {
       result += 3;
     } else if (area > 5000 && area < 10000) {
       result += 4;
@@ -98,30 +93,31 @@ const SearchComponent = ({ searchByAddress, changeOsmId }) => {
     }
 
     // near forest check
-    if (nearForest === true) {
+    if (nearbyForest === "1") {
       result += 1;
     } else {
       result += 2;
     }
 
     // near water check
-    if (nearWater === true) {
+    if (nearbyWater === "1") {
       result += 1;
     } else {
       result += 2;
     }
 
     // public building check
-    if (publicBld === true) {
+    if (publicBld === "public") {
       result += 2;
     } else {
       result += 1;
     }
-    if (result >= 15) return "פוטנציאל גבוהה";
+    console.log(result);
+    if (result >= 12) return "פוטנציאל גבוהה";
 
-    if (result >= 10 && result < 15) return " פוטנציאל טוב";
+    if (result >= 8 && result < 12) return " פוטנציאל טוב";
 
-    if (result < 10) return " פוטנציאל נמוך";
+    if (result < 7) return " פוטנציאל נמוך";
   };
 
   return (

@@ -12,7 +12,7 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
   const calculateRating = (data) => {
     const { height, area, zone, nearForest, nearWater, publicBld } = data;
     let result = 0;
-
+    // area = Number(area);
     // height check
     if (height > 0 && height < 200) {
       result += 3;
@@ -53,14 +53,14 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
     }
 
     // near forest check
-    if (nearForest === true) {
+    if (nearForest === "1") {
       result += 1;
     } else {
       result += 2;
     }
 
     // near water check
-    if (nearWater === true) {
+    if (nearWater === "1") {
       result += 1;
     } else {
       result += 2;
@@ -73,17 +73,17 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
       result += 1;
     }
 
-    if (result >= 15) return "פוטנציאל גבוהה";
+    if (result >= 12) return "פוטנציאל גבוהה";
 
-    if (result >= 10 && result < 15) return " פוטנציאל טוב";
+    if (result >= 8 && result < 12) return " פוטנציאל טוב";
 
-    if (result < 10) return " פוטנציאל נמוך";
+    if (result < 7) return " פוטנציאל נמוך";
   };
 
   const rating = (bldProp) => {
     const data = {
       height: bldProp.Z,
-      area: bldProp.area,
+      area: Number(bldProp.area),
       zone: bldProp.zone,
       nearForest: bldProp.nearbyForest,
       nearWater: bldProp.nearbyWater,

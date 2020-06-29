@@ -8,7 +8,6 @@ import { server } from "../../api/axios";
 
 const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
   const [activeMarker, setActiveMarker] = useState(null);
-  //const [clickCalc, setClickCalc] = useState(false);
   const [markerMessage, setMarkerMessage] = useState();
   const roofimg = () => {
     if (osmId === "154213256" || osmId === "369912231") return osmId;
@@ -37,10 +36,8 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
         let x = area;
         x = (x.properties.area * res.data.response) / 100;
         setMarkerMessage("השטח הפנוי המוערך הוא:" + x);
-        
-      }
-      else {
-        setMarkerMessage('אין תמונה במאגר')
+      } else {
+        setMarkerMessage("אין תמונה במאגר");
       }
     });
   };
@@ -61,7 +58,11 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
         >
           <div className="popup">
             <h2>{" עיר: " + activeMarker.properties.name_2}</h2>
-            <h2>{address !== undefined ? " כתובת: " + address : null}</h2>
+            <h2>
+              {address !== undefined
+                ? " כתובת: " + address
+                : "אין כתובת מדוייקת"}
+            </h2>
             <h2>
               {activeMarker.properties.name !== null
                 ? " שם: " + activeMarker.properties.name
@@ -69,7 +70,23 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
             </h2>
             <h2>{"שטח הגג: " + activeMarker.properties.area}</h2>
             <h2>{" גובה: " + activeMarker.properties.Z}</h2>
-            <h2>{" איזור: " + activeMarker.properties.zone}</h2>
+            <h2>
+              " איזור: "{}
+              {activeMarker.properties.zone !== null ? "מדברי" : "לא ידוע"}
+            </h2>
+            <h2>
+              " אזור מיוער: "{}
+              {activeMarker.properties.nearbyForest === null ? "לא" : "כן"}
+            </h2>
+            <h2>
+              " קרוב לואדי: "{" "}
+              {activeMarker.properties.nearbyWater === null ? "לא" : "כן"}
+            </h2>
+            <h2>
+              " מבנה ציבורי: "{" "}
+              {activeMarker.properties.public === null ? "לא" : "כן"}
+            </h2>
+
             <img className="img-bld" src={require(`./${roofimg()}.png`)} />
             <button onClick={clickCalcArea}>חישוב שטח פנוי</button>
           </div>

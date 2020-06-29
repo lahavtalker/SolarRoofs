@@ -6,18 +6,18 @@ import { changeOsmId } from "../redux/action";
 const BldItem = ({ bldProperties, address, rating }) => {
   const checkUndefined = () => {
     if (bldProperties !== undefined) {
-      bldProperties.properties.public === null
-        ? (bldProperties.properties.public = "אינו מבנה ציבורי")
-        : (bldProperties.properties.public = "מבנה ציבורי");
-      bldProperties.properties.zone === "desert"
-        ? (bldProperties.properties.zone = "איזור מדברי")
-        : (bldProperties.properties.zone = "");
-      bldProperties.properties.nearbyForest === null
-        ? (bldProperties.properties.nearbyForest = "אינו באיזור מיוער")
-        : (bldProperties.properties.nearbyForest = "איזור מיוער");
-      bldProperties.properties.nearbyWater === null
-        ? (bldProperties.properties.nearbyWater = "אינו באיזור ואדי")
-        : (bldProperties.properties.nearbyWater = "קרוב לואדי");
+      // bldProperties.properties.public === null
+      //   ? (bldProperties.properties.public = "אינו מבנה ציבורי")
+      //   : (bldProperties.properties.public = "מבנה ציבורי");
+      // bldProperties.properties.zone === "desert"
+      //   ? (bldProperties.properties.zone = "איזור מדברי")
+      //   : (bldProperties.properties.zone = "");
+      // bldProperties.properties.nearbyForest === null
+      //   ? (bldProperties.properties.nearbyForest = "אינו באיזור מיוער")
+      //   : (bldProperties.properties.nearbyForest = "איזור מיוער");
+      // bldProperties.properties.nearbyWater === null
+      //   ? (bldProperties.properties.nearbyWater = "אינו באיזור ואדי")
+      //   : (bldProperties.properties.nearbyWater = "קרוב לואדי");
 
       return true;
     }
@@ -38,11 +38,17 @@ const BldItem = ({ bldProperties, address, rating }) => {
 
         <div className="info zone">
           <h4>איזור</h4>
-          <p>{bldProperties.properties.zone}</p>
+          <p>
+            {bldProperties.properties.zone === "desert" ? "איזור מדברי" : ""}
+          </p>
         </div>
         <div className="info public">
           <h4>ציבורי/פרטי</h4>
-          <p>{bldProperties.properties.public}</p>
+          <p>
+            {bldProperties.properties.public === null
+              ? "אינו מבנה ציבורי"
+              : "מבנה ציבורי"}
+          </p>
         </div>
         <div className="info area">
           <h4>שטח</h4>
@@ -55,20 +61,26 @@ const BldItem = ({ bldProperties, address, rating }) => {
 
         <div className="info forrest">
           <h4>איזור מיוער</h4>
-          <p> {bldProperties.properties.nearbyForest}</p>
+          <p>
+            {" "}
+            {bldProperties.properties.nearbyForest === null
+              ? "אינו באיזור מיוער"
+              : "איזור מיוער"}
+          </p>
         </div>
         <div className="info waterway">
           <h4>איזור ואדיות</h4>
-          <p> {bldProperties.properties.nearbyWater}</p>
+          <p>
+            {" "}
+            {bldProperties.properties.nearbyWater === null
+              ? "אינו באיזור ואדי"
+              : "קרוב לואדי"}
+          </p>
         </div>
         <div className="info potential">
           <h4>פוטנציאל</h4>
           <p> {rating}</p>
         </div>
-        {/* <div className="info summary">
-          <h4> Summary:</h4>
-          <p> {}</p>
-        </div> */}
       </div>
     );
   }
