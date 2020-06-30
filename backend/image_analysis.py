@@ -1,5 +1,13 @@
 import cv2
 
+def check_img(img_index):
+    img = cv2.imread('backend/{}.png'.format(img_index), -1)
+    print(img)
+    if(img is None):
+        return False
+    else:
+        return True
+
 def analyze(img_index):
 
     img = cv2.imread('backend/{}.png'.format(img_index), -1)
