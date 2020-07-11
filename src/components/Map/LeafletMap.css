@@ -7,7 +7,8 @@
 }
 .popup {
   width: 100%;
-  text-align: right;
+  align-items: center;
+  text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 10px;
@@ -17,4 +18,9 @@
   width: 150px;
   height: 150px;
   /* background: blueviolet; */
+}
+.resArea {
+  font-size: 20px;
+  color: green;
+  text-align: center;
 }

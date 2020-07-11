@@ -9,7 +9,7 @@ import { server } from "../../api/axios";
 const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
   const [activeMarker, setActiveMarker] = useState(null);
   const [markerMessage, setMarkerMessage] = useState();
-  const [imgroof, setImgroof] = useState('def');
+  const [imgroof, setImgroof] = useState("def");
   const roofimg = () => {
     return server.get(`/checkIMG/${osmId}`).then((res) => {
       const { repsonse } = res.data;
@@ -17,9 +17,9 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
       if (!repsonse) {
         setImgroof("def");
       } else {
-        setImgroof(osmId)
+        setImgroof(osmId);
       }
-    })
+    });
   };
   const renderMarkerMap = () => {
     return bldData.features
@@ -33,7 +33,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
           ]}
           onClick={() => {
             setActiveMarker(bld);
-            roofimg()
+            roofimg();
           }}
         />
       ));
@@ -99,7 +99,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
             <img className="img-bld" src={require(`./${imgroof}.png`)} />
             <button onClick={clickCalcArea}>חישוב שטח פנוי</button>
           </div>
-          <div>{markerMessage}</div>
+          <div className="resArea">{markerMessage}</div>
         </Popup>
       )
     );
