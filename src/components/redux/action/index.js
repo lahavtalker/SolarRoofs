@@ -1,8 +1,8 @@
-export const searchByCity = (cityBld) => {
+export const searchByCity = (cityBld, bld) => {
   console.log(cityBld);
   return {
     type: "SEARCH_BY_CITY",
-    payload: cityBld,
+    payload: { city: cityBld, bld },
   };
 };
 export const searchByAddress = (itemBld) => {

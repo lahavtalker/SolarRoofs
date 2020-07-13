@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as bld from "../BeerSheva.json";
 import "./Table.css";
-import { changeOsmId, searchByAddress, searchByCity } from "../redux//action";
+import { changeOsmId, searchByCity } from "../redux//action";
 
-const Table = ({ searchValue, changeOsmId, zoom, searchByAddress }) => {
+const Table = ({ searchValue, changeOsmId, zoom, searchByCity }) => {
   const onClickOnBld = (id, cord, zoom, bldp) => {
     changeOsmId({ id, cord, zoom });
   };
@@ -98,12 +98,12 @@ const Table = ({ searchValue, changeOsmId, zoom, searchByAddress }) => {
   const renderTableData = () => {
     const bldData = bld.features;
     return bldData
-      .filter((bld) => bld.properties.name_2 === searchValue)
+      .filter((bld) => bld.properties.name_2 === searchValue.city)
       .map((bld) => (
         <tr
           key={bld.properties.osm_id}
           onClick={() => {
-            searchByAddress(bld);
+            searchByCity(searchValue.city, bld);
             onClickOnBld(
               bld.properties.osm_id,
               bld.geometry.coordinates[0],
@@ -148,6 +148,4 @@ const mapStateToProps = (state) => {
     zoom: state.mapGeometry.zoom,
   };
 };
-export default connect(mapStateToProps, { changeOsmId, searchByAddress })(
-  Table
-);
+export default connect(mapStateToProps, { changeOsmId, searchByCity })(Table);

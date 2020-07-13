@@ -3,10 +3,7 @@ import os
 
 def check_img(img_index):
     img = cv2.imread('{}.png'.format(img_index), -1)
-<<<<<<< HEAD
 
-=======
->>>>>>> 346c7bb1cf807e2b2a032b545f4f920a7319e468
     if(img is None):
         return False
     else:

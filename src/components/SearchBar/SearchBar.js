@@ -6,7 +6,7 @@ const SearchBar = ({ searchByCity }) => {
   const [location, setLocation] = useState("");
 
   const onClickSearch = () => {
-    if (location.length > 0) searchByCity(location);
+    if (location.length > 0) searchByCity(location, null);
   };
 
   return (
