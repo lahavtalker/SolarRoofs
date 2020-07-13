@@ -1,8 +1,9 @@
 import cv2
+import os
 
 def check_img(img_index):
-    img = cv2.imread('backend/{}.png'.format(img_index), -1)
-    print(img)
+    img = cv2.imread('{}.png'.format(img_index), -1)
+
     if(img is None):
         return False
     else:
@@ -10,8 +11,8 @@ def check_img(img_index):
 
 def analyze(img_index):
 
-    img = cv2.imread('backend/{}.png'.format(img_index), -1)
-    edge = cv2.imread('backend/{}.png'.format(img_index), -1)
+    img = cv2.imread('{}.png'.format(img_index), -1)
+    edge = cv2.imread('{}.png'.format(img_index), -1)
 
     if(img is None or edge is None):
         return False

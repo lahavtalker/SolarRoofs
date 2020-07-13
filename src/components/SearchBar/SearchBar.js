@@ -29,7 +29,7 @@ const SearchBar = ({ searchByCity }) => {
           setLocation(event.target.value);
         }}
       />
-      <button onClick={onClickSearch}>Serach</button>
+      <button onClick={onClickSearch}>Search</button>
     </div>
   );
 };

@@ -6,19 +6,6 @@ import { changeOsmId } from "../redux/action";
 const BldItem = ({ bldProperties, address, rating }) => {
   const checkUndefined = () => {
     if (bldProperties !== undefined) {
-      // bldProperties.properties.public === null
-      //   ? (bldProperties.properties.public = "אינו מבנה ציבורי")
-      //   : (bldProperties.properties.public = "מבנה ציבורי");
-      // bldProperties.properties.zone === "desert"
-      //   ? (bldProperties.properties.zone = "איזור מדברי")
-      //   : (bldProperties.properties.zone = "");
-      // bldProperties.properties.nearbyForest === null
-      //   ? (bldProperties.properties.nearbyForest = "אינו באיזור מיוער")
-      //   : (bldProperties.properties.nearbyForest = "איזור מיוער");
-      // bldProperties.properties.nearbyWater === null
-      //   ? (bldProperties.properties.nearbyWater = "אינו באיזור ואדי")
-      //   : (bldProperties.properties.nearbyWater = "קרוב לואדי");
-
       return true;
     }
     return false;

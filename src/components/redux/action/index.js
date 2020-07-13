@@ -1,4 +1,5 @@
 export const searchByCity = (cityBld) => {
+  console.log(cityBld);
   return {
     type: "SEARCH_BY_CITY",
     payload: cityBld,

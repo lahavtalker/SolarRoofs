@@ -43,6 +43,7 @@ const LeafletMap = ({ osmId, lat, lag, zoom, address, area }) => {
     return server.get(`/getArea/${osmId}`).then((res) => {
       if (res.data.response !== false) {
         let x = area;
+        console.log("123", area);
         x = (x.properties.area * res.data.response) / 100;
         setMarkerMessage("השטח הפנוי המוערך הוא:" + x);
       } else {

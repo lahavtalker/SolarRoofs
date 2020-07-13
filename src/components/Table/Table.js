@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as bld from "../BeerSheva.json";
 import "./Table.css";
-import { changeOsmId } from "../redux//action";
+import { changeOsmId, searchByAddress, searchByCity } from "../redux//action";
 
-const Table = ({ searchValue, changeOsmId, zoom }) => {
-  const onClickOnBld = (id, cord, zoom) => {
+const Table = ({ searchValue, changeOsmId, zoom, searchByAddress }) => {
+  const onClickOnBld = (id, cord, zoom, bldp) => {
     changeOsmId({ id, cord, zoom });
   };
 
@@ -102,13 +102,14 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
       .map((bld) => (
         <tr
           key={bld.properties.osm_id}
-          onClick={() =>
+          onClick={() => {
+            searchByAddress(bld);
             onClickOnBld(
               bld.properties.osm_id,
               bld.geometry.coordinates[0],
               (zoom = 17)
-            )
-          }
+            );
+          }}
         >
           <td>{bld.properties.name}</td>
           <td>{bld.properties.public}</td>
@@ -144,8 +145,9 @@ const Table = ({ searchValue, changeOsmId, zoom }) => {
 const mapStateToProps = (state) => {
   return {
     searchValue: state.valueSearch,
-    selectBld: state.BldItem,
     zoom: state.mapGeometry.zoom,
   };
 };
-export default connect(mapStateToProps, { changeOsmId })(Table);
+export default connect(mapStateToProps, { changeOsmId, searchByAddress })(
+  Table
+);

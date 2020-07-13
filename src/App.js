@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar/Navbar";
 import AboutUs from "./components/AboutUs/AboutUs";
 import PrivateService from "./components/PrivateService/PrivateService";
 import OrganizationalService from "./components/OrganizationalService/OrganizationalService";
-import NationalService from "./components/NationalService/NationalService";
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
           exat
           component={OrganizationalService}
         />
-        {/* <Route path="/service/national" exact component={NationalService} /> */}
       </Switch>
     </Router>
   );
