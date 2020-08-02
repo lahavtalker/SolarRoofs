@@ -28,7 +28,7 @@ This system can be used by municipalities, electricity provider companies and la
 
 ## GIS analysis
 
-**The first stage is not an actual feature in the system but it is Very important as it describes how our database was created. </br>The process of the database creation consists of several steps:**
+**The first stage is not an actual feature in the system but it is very important as it describes how our database was created. </br>The process of the database creation consists of several steps:**
 
 - Creating/Acquiring the information layers needed, preferably in a format which fits
   a GIS system (QGIS, ArcGIS etc.)
