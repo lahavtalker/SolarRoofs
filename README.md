@@ -47,7 +47,7 @@ This system can be used by municipalities, electricity provider companies and la
 
 The final product will be a database which contains all the buildings and their grades, the higher the grade the higher the potential who that building.
 
-## image analysis
+## Image analysis
 
 image analysis also consists of several part:
 
