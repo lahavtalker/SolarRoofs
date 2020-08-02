@@ -28,11 +28,22 @@ This system can be used by municipalities, electricity provider companies and la
 
 ## GIS analysis
 
-- The analysis will be based on geographic information system or GIS, most of the information will be geographic information such as: topography, climates, building's relative height, and building's roof top are and the building's relative location to rivers and forests and such. However some information will be about the buildings themselves like the type of building and its coordinates.
-- The information layers used in this analysis are vector layers and more specifically polygon, line and vertices layers. There will be layers about the heights of the buildings, areas of the buildings, locations of the buildings, layout of rivers, layout of forests, topography layer, layer of climates.
-- During the intersections part we take the building layer and perform various intersections with other layers so that each building will have all the necessary information with it.
-- Using the results from the previous part, an area classification will be performed – those buildings whose area is less than the bare minimum required will not be included.
-- After the area classification, each building will given a grade based on all the information we have on it, for example a building in a snowy area will probably receive lower grade then a building in the desert etc.
+**The first stage is not an actual feature in the system but it is Very important as it describes how our database was created. </br>The process of the database creation consists of several steps:**
+
+- Creating/Acquiring the information layers needed, preferably in a format which fits
+  a GIS system (QGIS, ArcGIS etc.)
+
+- Intersections between the layers.
+
+- Classification of each building.
+
+- Rating if each building.
+
+* The analysis will be based on geographic information system or GIS, most of the information will be geographic information such as: topography, climates, building's relative height, and building's roof top are and the building's relative location to rivers and forests and such. However some information will be about the buildings themselves like the type of building and its coordinates.
+* The information layers used in this analysis are vector layers and more specifically polygon, line and vertices layers. There will be layers about the heights of the buildings, areas of the buildings, locations of the buildings, layout of rivers, layout of forests, topography layer, layer of climates.
+* During the intersections part we take the building layer and perform various intersections with other layers so that each building will have all the necessary information with it.
+* Using the results from the previous part, an area classification will be performed – those buildings whose area is less than the bare minimum required will not be included.
+* After the area classification, each building will given a grade based on all the information we have on it, for example a building in a snowy area will probably receive lower grade then a building in the desert etc.
 
 The final product will be a database which contains all the buildings and their grades, the higher the grade the higher the potential who that building.
 
