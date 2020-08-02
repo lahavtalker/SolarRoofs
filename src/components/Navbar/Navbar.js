@@ -22,9 +22,6 @@ const Navbar = () => {
             <li>
               <Link to="/service/organizational">Organizational service</Link>
             </li>
-            {/* <li>
-              <Link to="/service/national">National service</Link>
-            </li> */}
           </ul>
         </div>
       </nav>

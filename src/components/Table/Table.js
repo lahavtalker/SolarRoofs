@@ -12,8 +12,7 @@ const Table = ({ searchValue, changeOsmId, zoom, searchByCity }) => {
   const calculateRating = (data) => {
     const { height, area, zone, nearForest, nearWater, publicBld } = data;
     let result = 0;
-    // area = Number(area);
-    // height check
+
     if (height > 0 && height < 200) {
       result += 3;
     } else if (
