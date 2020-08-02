@@ -1,6 +1,6 @@
 # Solar Roofs Service - Final Project
 
-![GitHub Logo](https://github.com/lahavtalker/SolarRoofs/blob/master/src/components/Navbar/Logo.png?raw=true)
+![GitHub Logo](https://github.com/lahavtalker/SolarRoofs/blob/master/src/components/Navbar/Logo.png?raw=true)</br>
 Solar Roofs is a software whose purpose is to provide a database of building roofs who can potentially be used to install photovoltaic systems for solar power generation on them based on the use of data layers and maps from GIS system and the use of the OpenCV library for image analysis.
 
 The system will classify the buildings by priorities according to various parameters, such as available roof space, public or private buildings, location of the building in relation to the sun, the type of roof and more.
