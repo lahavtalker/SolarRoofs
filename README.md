@@ -19,12 +19,32 @@ This system can be used by municipalities, electricity provider companies and la
 3. The system will check if the address exists, if it does then it the building will be displayed on the map, otherwise, an error will be displayed.
 4. The user will click on the analyze image button, if the image exists then a request will be sent to the server and it will perform the image analysis and return an answer, if no image exists then an error will be displayed.
 
-####
+#### Organizational service
 
 5. The user enters the **Organizational service** screen.
 6. The user enters the **city** in the search bar.
 7. The system will check if the city exists, if it does then a list of the buildings in the city will be displayed, from which you will select the desired building and display it on the map.
 8. The user will click on the image analysis button, if the image exists then a request will be sent to the server and it will perform the image analysis and return a reply, if there is no image then an error will be displayed.
+
+## GIS analysis
+
+- The analysis will be based on geographic information system or GIS, most of the information will be geographic information such as: topography, climates, building's relative height, and building's roof top are and the building's relative location to rivers and forests and such. However some information will be about the buildings themselves like the type of building and its coordinates.
+- The information layers used in this analysis are vector layers and more specifically polygon, line and vertices layers. There will be layers about the heights of the buildings, areas of the buildings, locations of the buildings, layout of rivers, layout of forests, topography layer, layer of climates.
+- During the intersections part we take the building layer and perform various intersections with other layers so that each building will have all the necessary information with it.
+- Using the results from the previous part, an area classification will be performed – those buildings whose area is less than the bare minimum required will not be included.
+- After the area classification, each building will given a grade based on all the information we have on it, for example a building in a snowy area will probably receive lower grade then a building in the desert etc.
+
+The final product will be a database which contains all the buildings and their grades, the higher the grade the higher the potential who that building.
+
+## image analysis
+
+image analysis also consists of several part:
+
+- After we are provided with an image of the building, we perform an edge detection algorithm to detect the rooftop in the image and calculate the area of ​​the rooftop (more accurately)
+- After the rooftop detection, we perform an edge detection on objects within the area of ​​the rooftop and calculate their overall area
+- Using both previous stages, we calculate the actual free area on the rooftop using the basic formula: true area = rooftop area - objects area
+- We divide the true area from previous stage to block cells and calculate the area of ​​these cells
+- Based on the results, we can classify the buildings into two categories: fit for installation or unfit for installation.
 
 ### `npm start`
 
