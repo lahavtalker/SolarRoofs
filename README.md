@@ -6,7 +6,7 @@ Solar Roofs is a software whose purpose is to provide a database of building roo
 The system will classify the buildings by priorities according to various parameters, such as available roof space, public or private buildings, location of the building in relation to the sun, the type of roof and more.
 This system can be used by municipalities, electricity provider companies and large companies offering the installation of this technology.
 
-## How to use:
+## How to use:ג
 
 - The user enters the main screen.
 - The user chooses the service he/she wants.
